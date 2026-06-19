@@ -1,293 +1,220 @@
-\# RavenStack: Synthetic SaaS Dataset (Multi-Table)
+# 📊 RavenStack SaaS Subscription & Churn Analysis
 
+An end-to-end Data Analytics project focused on understanding customer churn, retention, customer lifetime value (LTV), and revenue performance in a SaaS business environment.
 
+## 🚀 Project Overview
 
-\*\*Author:\*\* River @ Rivalytics  
+RavenStack is a fictional SaaS company facing customer retention challenges. The objective of this project was to analyze subscription, usage, support, and churn data to uncover the key drivers of churn and provide actionable business recommendations.
 
-\*\*Credit Requirement:\*\* You may use or remix this dataset for educational or portfolio purposes, but please credit the original author.  
+This project demonstrates the complete analytics workflow:
 
-\*\*Blog:\*\* \[Building a Dataset Generator App Journey](https://rivalytics.medium.com)  
-
-\*\*License:\*\* MIT-like (fully synthetic, no PII)  
-
-\*\*Refresh Interval:\*\* Monthly  
-
-\*\*Complexity:\*\* Capstone-level (multi-table, event-driven, time-sensitive)  
-
-\*\*Data Format:\*\* CSV  
-
-\*\*Row Volume:\*\*
-
-\- accounts – 500
-
-\- subscriptions – 5,000
-
-\- feature\_usage – 25,000
-
-\- support\_tickets – 2,000
-
-\- churn\_events – 600
-
-
-
-## Environment setup
-
-Copy `.env.example` to `.env` and fill in your local database credentials before running the notebook. The real `.env` stays out of version control.
+* Data Extraction & Validation
+* Data Cleaning & Feature Engineering
+* SQL-Based Business Analysis
+* Customer Lifetime Value (LTV) Modeling
+* Churn & Retention Analysis
+* Interactive Power BI Dashboard Development
 
 ---
 
+## 🎯 Business Objectives
 
-
-\## Scenario
-
-
-
-You're investigating RavenStack, a stealth-mode SaaS startup delivering AI-driven team tools. The product was secretly piloted with coding bootcamp graduates, and every sign-up, feature use, support ticket, and churn was captured. Now, you're tasked with discovering what drove conversions, support load, and churn patterns before their public launch.
-
-
+* Identify the major drivers of customer churn
+* Analyze retention across customer segments
+* Evaluate revenue health and customer lifetime value
+* Understand the impact of acquisition channels
+* Provide actionable recommendations to improve retention
 
 ---
 
+## 🛠️ Tech Stack
 
-
-\## How This Dataset Was Generated
-
-
-
-\- Scripted in Python using pandas, numpy, and uuid
-
-\- Temporal logic: Validated date ranges (e.g., signup ≤ subscription ≤ churn)
-
-\- Statistical realism: Exponential and Poisson distributions for seats, usage, and durations
-
-\- Primary \& foreign keys: All tables link properly; no orphans
-
-\- Edge cases: Mid-cycle plan changes, null fields, reactivations, duplicate referrals, beta feature spikes
-
-\- Nulls included: Satisfaction scores, feature usage, churn feedback
-
-\- Fully synthetic: All names, domains, feedback, and data are generated
-
-
+| Tool       | Purpose                                        |
+| ---------- | ---------------------------------------------- |
+| Python     | Data Cleaning, Validation, Feature Engineering |
+| Pandas     | Data Manipulation                              |
+| SQLAlchemy | Database Connectivity                          |
+| PostgreSQL | Data Storage & Business Analysis               |
+| SQL        | KPI Calculations & Queries                     |
+| Power BI   | Dashboard & Visualization                      |
 
 ---
 
+## 📂 Dataset
 
+Source: Kaggle SaaS Subscription & Churn Analytics Dataset
 
-\## Table Relationships
+### Dataset Structure
 
+| Table           | Records |
+| --------------- | ------- |
+| Accounts        | 500     |
+| Subscriptions   | 5,000   |
+| Feature Usage   | 25,000  |
+| Support Tickets | 2,000   |
+| Churn Events    | 600     |
 
+The dataset contains customer demographics, subscription history, product usage, support interactions, and churn information.
 
-accounts (PK: account\_id)
+---
 
+## 🔄 Data Pipeline
+
+### 1. Extract
+
+* Imported all tables from PostgreSQL using SQLAlchemy.
+
+### 2. Transform
+
+* Data validation
+* Missing value analysis
+* Churn signal verification
+* Feature engineering
+
+### 3. Load
+
+* Created a customer-level analytical dataset (`customer_metrics`)
+* Exported cleaned data to PostgreSQL and CSV
+
+### 4. Visualize
+
+* Built an interactive executive dashboard in Power BI
+
+---
+
+## 📈 Key KPIs
+
+| Metric                     | Value  |
+| -------------------------- | ------ |
+| Total Customers            | 465    |
+| Churn Rate                 | 16%    |
+| Retention Rate             | 84%    |
+| Average Satisfaction Score | 3.95   |
+| Average MRR                | $2.30K |
+
+---
+
+## 🔍 Key Insights
+
+### Customer Acquisition Matters More Than Pricing
+
+* Partner-sourced customers showed the lowest churn rate (**14.6%**)
+* Event-sourced customers showed the highest churn rate (**30.2%**)
+
+### Plan Tier Does Not Significantly Impact Churn
+
+| Plan       | Churn Rate |
+| ---------- | ---------- |
+| Basic      | 22.0%      |
+| Pro        | 21.9%      |
+| Enterprise | 22.1%      |
+
+### Top Churn Reasons
+
+* Features
+* Support
+* Budget Constraints
+* Competitor Products
+* Pricing Concerns
+
+### Customer Lifetime Value
+
+Partner-referred customers generated the highest average LTV:
+
+**$24,965**
+
+---
+
+## 📊 Power BI Dashboard
+
+The dashboard includes:
+
+### Executive KPIs
+
+* Total Customers
+* Churn Rate
+* Retention Rate
+* Average Satisfaction
+* Average MRR
+
+### Revenue Analysis
+
+* MRR by Industry
+* Customer Distribution by Plan
+
+### Churn Analysis
+
+* Churn Rate by Referral Source
+* Churn Rate by Plan Tier
+* Churn Reason Breakdown
+
+### Customer Success Metrics
+
+* Resolution Time vs Satisfaction
+* Product Usage vs Churn Status
+
+---
+
+## 💡 Business Recommendations
+
+### 1. Increase Investment in Partner Channels
+
+Partner-acquired customers have both the highest LTV and lowest churn.
+
+### 2. Improve Event-Based Lead Quality
+
+Event-generated leads churn at twice the rate of partner-generated customers.
+
+### 3. Monitor Post-Upgrade Churn
+
+20.5% of churn events occurred after upgrades, indicating potential buyer's remorse.
+
+### 4. Improve Churn Data Collection
+
+32% of churned customers lacked a recorded churn reason.
+
+### 5. Focus on Acquisition Quality
+
+The analysis suggests churn is driven more by customer fit than pricing strategy.
+
+---
+
+## 📁 Repository Structure
+
+```text
+RavenStack-SaaS-Analytics/
 │
-
-├── subscriptions (FK → accounts.account\_id)
-
-│ └── feature\_usage (FK → subscriptions.subscription\_id)
-
+├── data/
+├── sql/
+├── notebooks/
+├── dashboard/
+├── reports/
+├── README.md
 │
-
-├── support\_tickets (FK → accounts.account\_id)
-
-└── churn\_events (FK → accounts.account\_id)
-
-
-
-pgsql
-
-Copy
-
-Edit
-
-
-
-All account\_id and subscription\_id links are referentially complete.
-
-
+└── RavenStack.pbix
+```
 
 ---
 
-
-
-\## Table Schemas
-
-
-
-\### accounts.csv
-
-| Column         | Type       | Description                                |
-
-|----------------|------------|--------------------------------------------|
-
-| account\_id     | ID         | Unique customer (primary key)              |
-
-| account\_name   | string     | Fictional company name                     |
-
-| industry       | categorical| SaaS vertical (e.g., DevTools, EdTech)     |
-
-| country        | string     | ISO-2 country code                         |
-
-| signup\_date    | date       | Account creation date                      |
-
-| referral\_source| categorical| organic, ads, event, partner, other        |
-
-| plan\_tier      | categorical| Initial plan (Basic, Pro, Enterprise)      |
-
-| seats          | integer    | Licensed user count                        |
-
-| is\_trial       | boolean    | Currently trialing                         |
-
-| churn\_flag     | boolean    | Churned at any point                       |
-
-
-
-\### subscriptions.csv
-
-| Column           | Type       | Description                            |
-
-|------------------|------------|----------------------------------------|
-
-| subscription\_id  | ID         | Unique subscription (primary key)      |
-
-| account\_id       | ID (FK)    | Links to accounts.account\_id           |
-
-| start\_date       | date       | Subscription start                     |
-
-| end\_date         | date       | Nullable for active plans              |
-
-| plan\_tier        | categorical| Plan at time of billing                |
-
-| seats            | integer    | Licensed seats                         |
-
-| mrr\_amount       | currency   | Monthly revenue                        |
-
-| arr\_amount       | currency   | Annual revenue                         |
-
-| is\_trial         | boolean    | Trial status                           |
-
-| upgrade\_flag     | boolean    | Plan upgraded mid-cycle                |
-
-| downgrade\_flag   | boolean    | Plan downgraded mid-cycle              |
-
-| churn\_flag       | boolean    | True if ended                          |
-
-| billing\_frequency| categorical| monthly or annual                      |
-
-| auto\_renew\_flag  | boolean    | 80% true                               |
-
-
-
-\### feature\_usage.csv
-
-| Column           | Type       | Description                            |
-
-|------------------|------------|----------------------------------------|
-
-| usage\_id         | ID         | Unique usage event                     |
-
-| subscription\_id  | ID (FK)    | Links to subscriptions.subscription\_id |
-
-| usage\_date       | date       | Date of usage                          |
-
-| feature\_name     | categorical| From pool of 40 SaaS features          |
-
-| usage\_count      | integer    | Event frequency                        |
-
-| usage\_duration\_secs | integer | Time spent                             |
-
-| error\_count      | integer    | Logged errors                          |
-
-| is\_beta\_feature  | boolean    | 10% flagged as beta                    |
-
-
-
-\### support\_tickets.csv
-
-| Column                  | Type       | Description                          |
-
-|-------------------------|------------|--------------------------------------|
-
-| ticket\_id               | ID         | Unique ticket                        |
-
-| account\_id              | ID (FK)    | Links to accounts.account\_id         |
-
-| submitted\_at            | datetime   | Time opened                          |
-
-| closed\_at               | datetime   | Time resolved                        |
-
-| resolution\_time\_hours   | float      | Duration                             |
-
-| priority                | categorical| low, medium, high, urgent            |
-
-| first\_response\_time\_minutes | integer| Minutes to first response            |
-
-| satisfaction\_score      | integer    | 1–5 (null = no response)             |
-
-| escalation\_flag         | boolean    | True if escalated                    |
-
-
-
-\### churn\_events.csv
-
-| Column              | Type       | Description                           |
-
-|---------------------|------------|---------------------------------------|
-
-| churn\_event\_id      | ID         | Unique churn instance                 |
-
-| account\_id          | ID (FK)    | Links to accounts.account\_id          |
-
-| churn\_date          | date       | When account left                     |
-
-| reason\_code         | categorical| pricing, support, features, etc.      |
-
-| refund\_amount\_usd   | currency   | $0 default, 25% have credit/refund    |
-
-| preceding\_upgrade\_flag| boolean | Had upgrade within 90 days             |
-
-| preceding\_downgrade\_flag| boolean| Had downgrade within 90 days          |
-
-| is\_reactivation     | boolean    | 10% were previously churned           |
-
-| feedback\_text       | string     | Optional customer comment             |
-
-
+## 📌 Key Skills Demonstrated
+
+* Data Analytics
+* Exploratory Data Analysis (EDA)
+* SQL Querying
+* Data Validation
+* Feature Engineering
+* Customer Churn Analysis
+* Customer Lifetime Value (LTV)
+* Business Intelligence
+* Power BI Dashboarding
+* Data Storytelling
 
 ---
 
+## 📬 Connect With Me
 
+www.linkedin.com/in/aditya-singh-27957a361
 
-\## Suggested Projects
+Aspiring Data Analyst | Python | SQL | Power BI | Business Intelligence
 
-
-
-\- Churn prediction using subscriptions + support data
-
-\- Feature adoption tracking during beta phases
-
-\- Support workload forecasting
-
-\- Revenue cohort analysis by referral channel
-
-\- Plan tier upgrade funnel by industry
-
-\- Latency analysis by seat count and plan tier
-
-
-
----
-
-
-
-\## Licensing
-
-
-
-This dataset is fully synthetic and distributed under a permissive MIT-like license.  
-
-You may use or remix it for learning, research, or portfolio purposes, but \*\*you must credit the dataset author: River @ Rivalytics.\*\*
-
-
-
-
+If you found this project interesting, feel free to ⭐ the repository and connect with me on LinkedIn.
